@@ -112,9 +112,8 @@ if (confirmation('Create rule for nginx for site '.SITENAME.'?') === true) {
 			echo 'Rule for nginx for site '. SITENAME . 'was enabled' . "\n";
 		}
 
-		if (confirmation('Reload configuration for nginx?') === true && file_exists('/var/run/nginx.pid')) {
-			$nginx_pid = file_get_contents('/var/run/nginx.pid');
-			exec('kill -HUP ' . $nginx_pid);
+		if (confirmation('Reload configuration for nginx?') === true) {
+			exec('/etc/init.d/nginx reload');
 			echo 'Configuration for nginx was reloaded' . "\n";
 		}
 	}
