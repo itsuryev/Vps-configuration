@@ -1,0 +1,21 @@
+<VirtualHost 127.0.0.1>
+	ServerName %SITENAME%
+	ServerAlias www.%SITENAME%
+	ServerAlias %SITENAME%.server.hshhhhh.name
+
+	CustomLog /var/log/apache2/%SITEPATH%.access.log combined
+	ErrorLog /var/log/apache2/%SITEPATH%.error.log
+
+	DocumentRoot /home/%SITEPATH%/public_html/
+	AssignUserId %USERNAME% %USERGROUP%
+
+	<Directory />
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+</VirtualHost>
