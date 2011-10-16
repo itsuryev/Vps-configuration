@@ -26,8 +26,8 @@ define('NGINX_DIR', '/etc/nginx/');
 define('APACHE_DIR', '/etc/apache2/');
 
 
-$array_find = array('%SITENAME%','%SITEPATH%','%USERNAME%','%USERGROUP%','%DATABASENAME%','%DATABASEUSER%');
-$array_replace = array(SITENAME,SITEPATH,USERNAME,USERGROUP,DATABASENAME,DATABASEUSER);
+$array_find = array('%SITENAME%','%SITEPATH%','%USERNAME%','%USERGROUP%');
+$array_replace = array(SITENAME,SITEPATH,USERNAME,USERGROUP);
 
 echo "\n\n";
 echo 'SITENAME: '.SITENAME."\n"; 
