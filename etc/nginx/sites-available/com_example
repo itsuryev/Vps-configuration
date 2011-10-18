@@ -3,33 +3,33 @@
 # %SITENAME%.server.hshhhhh.name
 
 server {
-···listen 80;
-···server_name www.%SITENAME%;
-···rewrite . http://%SITENAME%$request_uri permanent;
-···break;
+	listen 80;
+	server_name www.%SITENAME%;
+	rewrite . http://%SITENAME%$request_uri permanent;
+	break;
 }
 
 server {
-¦···listen 80;
-¦···server_name %SITENAME% %SITENAME%.server.hshhhhh.name;
+	listen 80;
+	server_name %SITENAME% %SITENAME%.server.hshhhhh.name;
 
-¦···access_log /var/log/nginx/%SITEPATH%.access.log;
-¦···charset utf-8;
-¦···root /home/%SITEPATH%/public_html;
+	access_log /var/log/nginx/%SITEPATH%.access.log;
+	charset utf-8;
+	root /home/%SITEPATH%/public_html;
 
-¦···# Include @apache location
-¦···include /etc/nginx/sites-available/_apache;
+	# Include @apache location
+	include /etc/nginx/sites-available/_apache;
 
-¦···location ~ /\.ht {
-¦···¦···deny all;
-¦···}
+	location ~ /\.ht {
+		deny all;
+	}
 
-¦···location ~ \.php$ {
-¦···¦···include /etc/nginx/sites-available/_proxy;
-¦···}
+	location ~ \.php$ {
+		include /etc/nginx/sites-available/_proxy;
+	}
 
-¦···location / {
-¦···¦···index index.html index.htm index.php;
-¦···¦···try_files $uri $uri/ @apache;
-¦···}
+	location / {
+		index index.html index.htm index.php;
+		try_files $uri $uri/ @apache;
+	}
 }
