@@ -56,8 +56,12 @@ if (confirmation('Adding user '.USERNAME.'?') === true) {
 	} else {
 		$password = generate_password();
 
+		die("\r\nSorry, but you should edit this script and uncomment user adding method for your system and delete this line.\r\n");
+		// Adding user in ubuntu
+		/*
 		$process = proc_open('adduser --quiet '.USERNAME, $descriptorspec, $pipes);
 
+		// For additional userinfo in ubuntu
 		fwrite($pipes[0], "{$password}\n");
 		fwrite($pipes[0], "{$password}\n");
 		for ($i=0; $i<5; $i++) {
@@ -66,6 +70,13 @@ if (confirmation('Adding user '.USERNAME.'?') === true) {
 		fwrite($pipes[0], "y\n");
 		fclose($pipes[0]);
 		fclose($pipes[1]);
+		*/
+
+		// Adding user in gentoo
+		/*
+		$process = proc_open("useradd -mU -p \$(openssl passwd \"{$password}\") ".USERNAME, $descriptorspec, $pipes);
+		*/
+
 		proc_close($process);
 
 		exec('usermod -aG ' . USERGROUP . ' nginx');
